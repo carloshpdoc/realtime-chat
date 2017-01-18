@@ -1,0 +1,23 @@
+extends layout
+
+block content
+    div(data-ng-controller="MessageController as vm")
+        div.panel.panel-defaul
+            div.panel-heading
+                h4 Sending a new Message
+            div.panel-body
+                form
+                    div.form-group
+                        input.form-control(placeholder="Enter your topic here", data-ng-model="post.title")
+                    div.form-group
+                        textarea.form-control(placeholder="Enter your message here", data-ng-model="post.text")
+            div.panel-footer
+                button.btn.btn-primary.btn-sm(type="submit", data-ng-click="vm.create(post)") Post
+                button.btn.btn-warning.btn-sm(type="reset") Reset
+
+        div.panel.panel-defaul(data-ng-repeat="post in vm.arr track by $index")
+            div.panel-heading
+                h4 List of messages
+            div.panel-body
+                h2 {{post.title}}
+                p  {{post.text}}
